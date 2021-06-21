@@ -1,0 +1,21 @@
+ html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+input[type=button]{
+     background: #B9DFFF;
+     color: #fff;
+     border: 1px solid #eee;
+     border-radius: 20px;
+     box-shadow: 5px 5px 5px #eee;
+     text-shadow:none;
+}
+input[type=button]:hover {
+     background: #016ABC;
+     color: #fff;
+     border: 1px solid #eee;
+     border-radius: 20px;
+     box-shadow: 5px 5px 5px #eee;
+     text-shadow:none;
+}
