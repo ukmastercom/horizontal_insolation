@@ -1,4 +1,6 @@
 #original project
+#flask code
+
 #virtualenv env
 #.\\env\Scripts\activate.ps1
 #pip install flask flask-sqlalchemy
@@ -10,6 +12,8 @@ import csv
 import pandas as pd
 import solar
 import fomatcsv
+import correl
+import rem
 
 app = Flask(__name__)
 
@@ -38,20 +42,29 @@ def getlongi():
         value_longi = request.form.getlist('longikey[]')
         dfb = pd.DataFrame(value_longi,columns=["Longitudes"])
         dfb.to_csv('longitude.csv', index=False)
-        solar.getvals()
-        fomatcsv.convert()
+        ##solar.getvals()
+        ##fomatcsv.convert()
+        ##correl.cor()
+        ##rem.unwanted()
         return "ok"
 #def getinfo():
     # here we want to get the value of the key (i.e. ?key=value)
 #    value = request.args.getlist('key[]')
 
+@app.route('/getstartd',methods=["GET","POST"])
+def getstart():
+    if request.method == 'POST':
+        value = request.form.getlist('s_d[]')
+        df = pd.DataFrame(value,columns=["dates"])
+        df.to_csv('dates.csv', index=False)
+        return "ok"
 
 
 #download csv on download_csv.html
 #@app.route('/download')
 #def download_file():
- #   p="final_save.csv"
-  #  return send_file(p,as_attachment=True)
+#    p="final_save.csv"
+#    return send_file(p,as_attachment=True)
 
 
     

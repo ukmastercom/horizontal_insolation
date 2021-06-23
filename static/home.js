@@ -24,6 +24,7 @@ function valueassign() {
     radius = document.getElementById("radius").value;
     radius = 1000 * radius;
     radii = radius / Math.sqrt(3);
+    getdates();
     map.setOptions({
         draggableCursor: "crosshair"
     });
@@ -46,6 +47,8 @@ function valueassign() {
         // alert("here");
         postlati();
         postlongi();
+        lattosave = [];
+        longtosave = [];
     });
 
 }
@@ -206,3 +209,25 @@ function postlongi() {
 // csvlong = longtosave.toString();
 //document.write(csvlat);
 //}
+function getdates() {
+
+    var start_date = document.getElementById("startdate").value;
+    //end date
+    document.getElementById("enddate").setAttribute("max", today);
+    var end_date = document.getElementById("enddate").value;
+    var dates_array = []
+    dates_array.push(start_date);
+    dates_array.push(end_date);
+    $.post(
+        url = "/getstartd", // url
+        data = {
+            s_d: dates_array
+        }, // data to be submit
+        success = function(data) { // success callback
+            alert("OK1");
+        }
+    )
+
+    //end date
+    var end_date = document.getElementById("enddate").value;
+}
