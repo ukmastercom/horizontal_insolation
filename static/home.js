@@ -6,6 +6,7 @@ var hexapts = [];
 var hexaptsout = [];
 var lattosave = [];
 var longtosave = [];
+var noneed = 0;
 //this function will load the map
 function loadmap() {
     var mapOptions = {
@@ -186,9 +187,8 @@ function postlati() {
         url = "/getlati", // url
         data = { latikey: lattosave }, // data to be submit
         success = function(data) { // success callback
-            alert("OK");
+            noneed = 0;
         })
-    alert("here");
     return;
 
 }
@@ -198,7 +198,7 @@ function postlongi() {
         url = "/getlongi", // url
         data = { longikey: longtosave }, // data to be submit
         success = function(data) { // success callback
-            alert("OK");
+            alert("Your file is ready!!!");
         })
     return;
 }
@@ -224,7 +224,7 @@ function getdates() {
             s_d: dates_array
         }, // data to be submit
         success = function(data) { // success callback
-            alert("OK1");
+            noneed = 0;
         }
     )
 

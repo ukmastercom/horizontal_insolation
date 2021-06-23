@@ -42,10 +42,10 @@ def getlongi():
         value_longi = request.form.getlist('longikey[]')
         dfb = pd.DataFrame(value_longi,columns=["Longitudes"])
         dfb.to_csv('longitude.csv', index=False)
-        ##solar.getvals()
-        ##fomatcsv.convert()
-        ##correl.cor()
-        ##rem.unwanted()
+        solar.getvals()
+        fomatcsv.convert()
+        correl.cor()
+        #rem.unwanted()
         return "ok"
 #def getinfo():
     # here we want to get the value of the key (i.e. ?key=value)

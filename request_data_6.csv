@@ -1,0 +1,58 @@
+{
+ "features": [
+  {
+   "geometry": {
+    "coordinates": [
+     77.48388,
+     24.48104,
+     450.55
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "parameter": {
+     "ALLSKY_SFC_SW_DWN": {
+      "20210519": 4.98,
+      "20210520": 6.01,
+      "20210521": 6.71,
+      "20210522": 6.72,
+      "20210523": 6.87,
+      "20210524": 7.06,
+      "20210525": -999.0,
+      "20210526": 6.89,
+      "20210527": 6.79
+     }
+    }
+   },
+   "type": "Feature"
+  }
+ ],
+ "header": {
+  "api_version": "1.1.0",
+  "endDate": "20210527",
+  "fillValue": "-999",
+  "startDate": "20210519",
+  "title": "NASA/POWER SRB/FLASHFlux/MERRA2/GEOS 5.12.4 (FP-IT) 0.5 x 0.5 Degree Daily Averaged Data"
+ },
+ "messages": [],
+ "outputs": {
+  "csv": "https://power.larc.nasa.gov/downloads/POWER_SinglePoint_Daily_20210519_20210527_024d48N_077d48E_4427f4fe.csv"
+ },
+ "parameterInformation": {
+  "ALLSKY_SFC_SW_DWN": {
+   "longname": "All Sky Insolation Incident on a Horizontal Surface",
+   "units": "kW-hr/m^2/day"
+  }
+ },
+ "time": [
+  [
+   "Main OPeNDAP Requests:",
+   0.34
+  ],
+  [
+   "Total Script:",
+   1.21
+  ]
+ ],
+ "type": "FeatureCollection"
+}
