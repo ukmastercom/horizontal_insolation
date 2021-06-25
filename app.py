@@ -6,7 +6,7 @@
 #pip install flask flask-sqlalchemy
 #pip install pandas
 #python app.py
-from flask import Flask, render_template, url_for, request, jsonify,send_file
+from flask import Flask, render_template, url_for, request, jsonify,send_file,send_from_directory
 import json
 import csv
 import pandas as pd
@@ -14,6 +14,7 @@ import solar
 import fomatcsv
 import correl
 import rem
+
 
 app = Flask(__name__)
 
@@ -45,7 +46,7 @@ def getlongi():
         solar.getvals()
         fomatcsv.convert()
         correl.cor()
-        #rem.unwanted()
+        rem.unwanted()
         return "ok"
 #def getinfo():
     # here we want to get the value of the key (i.e. ?key=value)
@@ -61,10 +62,10 @@ def getstart():
 
 
 #download csv on download_csv.html
-#@app.route('/download')
-#def download_file():
-#    p="final_save.csv"
-#    return send_file(p,as_attachment=True)
+@app.route('/download')
+def download_file():
+    p="corr_op.csv"
+    return send_file(p,as_attachment=True)
 
 
     
