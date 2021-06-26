@@ -47,7 +47,7 @@ def getlongi():
         fomatcsv.convert()
         correl.cor()
         rem.unwanted()
-        return "ok"
+        return 'ok'
 #def getinfo():
     # here we want to get the value of the key (i.e. ?key=value)
 #    value = request.args.getlist('key[]')
@@ -62,10 +62,10 @@ def getstart():
 
 
 #download csv on download_csv.html
-@app.route('/download')
+@app.route('/download_csv')
 def download_file():
     p="corr_op.csv"
-    return send_file(p,as_attachment=True)
+    return send_file(p,attachment_filename='result.csv')
 
 
     
