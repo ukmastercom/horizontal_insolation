@@ -44,7 +44,7 @@ function valueassign() {
         //alert("here");
         further();
         map.setCenter(cntr);
-
+        document.getElementById('plzwt').style.display = 'block';
         // alert("here");
         postlati();
         postlongi();
@@ -199,6 +199,8 @@ function postlongi() {
         data = { longikey: longtosave }, // data to be submit
         success = function(data) { // success callback
             alert("Your file is ready!!!");
+            document.getElementById('plzwt').style.display = 'none';
+            document.getElementById('downloadcsv').style.display = 'block';
         })
     return;
 }
