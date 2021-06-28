@@ -14,7 +14,7 @@ import solar
 import fomatcsv
 import correl
 import rem
-
+import fomatcsv_dates
 
 app = Flask(__name__)
 
@@ -45,6 +45,7 @@ def getlongi():
         dfb.to_csv('longitude.csv', index=False)
         solar.getvals()
         fomatcsv.convert()
+        fomatcsv_dates.convert_dates()
         correl.cor()
         rem.unwanted()
         return 'ok'
