@@ -118,9 +118,9 @@
  input[type=button] {
      background: #B9DFFF;
      color: #fff;
-     border: 2px solid #eee;
+     border: 1px solid #eee;
      border-radius: 20px;
-     box-shadow: 5px 5px 5px #eee;
+     /*box-shadow: 5px 5px 5px #eee;*/
      text-shadow: none;
      width: 40%;
      height: 4%;
@@ -131,7 +131,7 @@
      color: #fff;
      border: 1px solid #eee;
      border-radius: 20px;
-     box-shadow: 5px 5px 5px #eee;
+     /* box-shadow: 5px 5px 5px #eee;*/
      text-shadow: none;
  }
  /*set border to the form*/
@@ -139,7 +139,9 @@
  form {
      border: 3px solid #eee;
      width: 30%;
-     background-color: ghostwhite;
+     /*background-color: rgb(182, 220, 241);*/
+     background-color: aliceblue;
+     /*background-color: ghostwhite;*/
  }
  /*assign full width inputs*/
  
