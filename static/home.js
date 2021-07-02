@@ -7,6 +7,7 @@ var hexaptsout = [];
 var lattosave = [];
 var longtosave = [];
 var noneed = 0;
+
 //this function will load the map
 function loadmap() {
     var mapOptions = {
@@ -23,9 +24,18 @@ function loadmap() {
 function valueassign() {
     //alert("MARK COORDINATES");
     radius = document.getElementById("radius").value;
+    if (radius == "") {
+        window.location.reload();
+        return alert("Please enter radius");
+    } else if (radius <= 0) {
+        window.location.reload();
+        return alert("Radius should be greater than 0");
+    }
     radius = 1000 * radius;
     radii = radius / Math.sqrt(3);
-    getdates();
+    if (getdates()) {
+        return;
+    }
     map.setOptions({
         draggableCursor: "crosshair"
     });
@@ -217,6 +227,31 @@ function getdates() {
     //end date
     document.getElementById("enddate").setAttribute("max", today);
     var end_date = document.getElementById("enddate").value;
+    if (start_date == "" && end_date == "") {
+        window.location.reload();
+        alert("Please Enter start date and end date");
+        return true;
+    } else if (start_date == "") {
+        window.location.reload();
+        alert("Please Enter start date");
+        return true;
+    } else if (end_date == "") {
+        window.location.reload();
+        alert("Please Enter end date");
+        return true;
+    }
+
+    if (start_date >= end_date) {
+        window.location.reload();
+        alert("start date should be lesser than end date")
+        return true;
+    }
+    if (start_date > "2021-05-31" || end_date > "2021-05-31") {
+        window.location.reload();
+        alert("Dates violate specified range!")
+        return true;
+    }
+
     var dates_array = []
     dates_array.push(start_date);
     dates_array.push(end_date);
@@ -229,7 +264,8 @@ function getdates() {
             noneed = 0;
         }
     )
-
-    //end date
-    var end_date = document.getElementById("enddate").value;
+    return false;
 }
+
+
+// Restricts input for the given textbox to the given inputFilter.
