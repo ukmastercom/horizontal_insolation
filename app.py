@@ -46,7 +46,9 @@ def getlongi():
         solar.getvals()
         fomatcsv.convert()
         fomatcsv_dates.convert_dates()
-        correl.cor()
+        #pass your method_var here
+        mthd=2
+        correl.cor(mthd)
         rem.unwanted()
         return 'ok'
 #def getinfo():

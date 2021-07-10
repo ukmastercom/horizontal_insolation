@@ -51,7 +51,7 @@ def getvals():
             j=0
         file_name="save_data_{j}.csv".format(j=j)
         
-        with open(file_name, 'w') as f:
+        with open(file_name, 'w',newline='') as f:
             writer = csv.writer(f)
             writer.writerow(header)
             writer.writerows(zip(value_int_a, value_int_b))
