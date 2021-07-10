@@ -6,19 +6,26 @@ import io
 import os
 import csv
 from pandas import *
+import seaborn as sns
+import scipy.stats as stats
 
 #%matplotlib inline
 
-
-def cor():
+def cor(mthd):
     #read final_save
     df = pd.read_csv('final_save_dates.csv')
     a=['v0','v1','v2','v3','v4','v5','v6','v7','v8','v9','v10','v11','v12','v13','v14','v15','v16','v17','v18']
     df_var=df[a]
 
     #applying correlation
-    df_corr = df_var.corr()
+    #df_corr = df_var.corr(method=mthod)
     #df_corr.iloc[0]
+    if(mthd==1):
+        df_corr = df_var.corr(method="pearson")
+    elif(mthd==2):
+        df_corr = df_var.corr(method="kendall")
+    elif(mthd==3):
+        df_corr = df_var.corr(method="spearman")
     correlated_features = set()
     for i in range(len(df_corr .columns)):
         for j in range(1):
