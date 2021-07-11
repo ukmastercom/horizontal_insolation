@@ -8,7 +8,9 @@ import csv
 from pandas import *
 import seaborn as sns
 import scipy.stats as stats
-
+from numpy import loadtxt
+from xgboost import XGBRegressor
+from matplotlib import pyplot
 #%matplotlib inline
 
 def cor(mthd):
@@ -26,11 +28,27 @@ def cor(mthd):
         df_corr = df_var.corr(method="kendall")
     elif(mthd==3):
         df_corr = df_var.corr(method="spearman")
+    else:
+        x3=df_var
+        x3=np.array(x3)
+        X = x3[:,0:18]
+        y = x3[:,[18]]
+        model = XGBRegressor()
+        model.fit(X, y)
+        df_corr=model.feature_importances_
+
     correlated_features = set()
-    for i in range(len(df_corr .columns)):
-        for j in range(1):
-            if df_corr.iloc[i, j] > 0.81:
-                colname = df_corr.columns[i]
+
+    if(mthd!=4):
+        for i in range(len(df_corr.columns)):
+            for j in range(1):
+                if df_corr.iloc[i, j] > 0.81:
+                    colname = df_corr.columns[i]
+                    correlated_features.add(colname)
+    else:
+        for i in range(len(df_corr)):
+            if df_corr[i] > 0.1:
+                colname = "v{nm}".format(nm=i)
                 correlated_features.add(colname)
 
     #list correlation ans
