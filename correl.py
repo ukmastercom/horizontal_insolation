@@ -28,6 +28,7 @@ def cor(mthd):
         df_corr = df_var.corr(method="kendall")
     elif(mthd==3):
         df_corr = df_var.corr(method="spearman")
+        #i think there is problem in the else code provided to me..... please take care...
     else:
         x3=df_var
         x3=np.array(x3)
@@ -46,9 +47,10 @@ def cor(mthd):
                     colname = df_corr.columns[i]
                     correlated_features.add(colname)
     else:
+        correlated_features.add("v0")
         for i in range(len(df_corr)):
             if df_corr[i] > 0.1:
-                colname = "v{nm}".format(nm=i)
+                colname = "v{nm}".format(nm=(i+1))
                 correlated_features.add(colname)
 
     #list correlation ans
