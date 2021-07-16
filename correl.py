@@ -23,6 +23,7 @@ def cor(mthd):
     #applying correlation
     #df_corr = df_var.corr(method=mthod)
     #df_corr.iloc[0]
+    df_corr=[]
     if(mthd==1):
         df_corr = df_var.corr(method="pearson")
     elif(mthd==2):
