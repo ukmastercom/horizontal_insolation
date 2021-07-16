@@ -47,7 +47,7 @@ def getlongi():
         fomatcsv.convert()
         fomatcsv_dates.convert_dates()
         #pass your method_var here
-        mthd=4
+        mthd=5
         correl.cor(mthd)
         rem.unwanted()
         return 'ok'
