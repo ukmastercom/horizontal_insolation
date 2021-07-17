@@ -43,11 +43,13 @@ def getlongi():
         value_longi = request.form.getlist('longikey[]')
         dfb = pd.DataFrame(value_longi,columns=["Longitudes"])
         dfb.to_csv('longitude.csv', index=False)
+        cdf = pd.read_csv('method.csv',header=None)
+        mthd=cdf[0][0]
         solar.getvals()
         fomatcsv.convert()
         fomatcsv_dates.convert_dates()
         #pass your method_var here
-        mthd=5
+        
         correl.cor(mthd)
         rem.unwanted()
         return 'ok'
@@ -70,8 +72,15 @@ def download_file():
     p="corr_op.csv"
     return send_file(p,attachment_filename='result.csv')
 
+@app.route('/corr_mthd',methods=["GET","POST"])
+def corr_mthd():
+    if request.method == 'POST':
+        cmthd = request.form.get('mthd')
+        with open("method.csv", 'w',newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(cmthd)
+        return "ok"
 
-    
 
 if __name__ == "__main__":
     app.run(debug=True)
