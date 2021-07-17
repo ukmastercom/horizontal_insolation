@@ -129,6 +129,15 @@
                     document.getElementById("enddate").setAttribute("max", today);
                 </script>
                 <br><br>
+                <label><b>Correlation Method</b></label>
+                <select name="corr_mthd" id="corr_mthd">
+              <option value="pearson" selected>Pearson</option>
+              <option value="kendall">Kendall </option>
+              <option value="spearman">Spearman</option>
+              <option value="other1">Other method - 1</option>
+              <option value="other2">Other method - 2</option>
+          </select>
+                <br><br>
                 <input type="button" value="Mark Coordinates" id="submit" onClick="valueassign(); this.style.display='none'">
                 <!--this will bring some animation-->
                 <div id="plzwt" style="display: none;">
@@ -137,7 +146,7 @@
                 <div id="downloadcsv" style="display: none;">
 
                     <button> <a href="{{url_for('download_file')}}" style="text-decoration: none;">DOWNLOAD CSV</a> </button>
-
+                    <button><a href="/" style="text-decoration: none;">RESET</a></button>
                 </div>
             </div>
         </form>
