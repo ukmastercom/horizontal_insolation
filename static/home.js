@@ -7,6 +7,7 @@ var hexaptsout = [];
 var lattosave = [];
 var longtosave = [];
 var noneed = 0;
+var correlation_mthd = 1;
 
 //this function will load the map
 function loadmap() {
@@ -36,6 +37,19 @@ function valueassign() {
     if (getdates()) {
         return;
     }
+    correlation_mthd = document.getElementsByName("corr_mthd")[0];
+    correlation_mthd = correlation_mthd.value;
+    if (correlation_mthd == "pearson") {
+        correlation_mthd = 1;
+    } else if (correlation_mthd == "kendall") {
+        correlation_mthd = 2;
+    } else if (correlation_mthd == "spearman") {
+        correlation_mthd = 3;
+    } else if (correlation_mthd == "other1") {
+        correlation_mthd = 4;
+    } else if (correlation_mthd == "other2") {
+        correlation_mthd = 5;
+    }
     map.setOptions({
         draggableCursor: "crosshair"
     });
@@ -56,6 +70,7 @@ function valueassign() {
         map.setCenter(cntr);
         document.getElementById('plzwt').style.display = 'block';
         // alert("here");
+        postmthd();
         postlati();
         postlongi();
         lattosave = [];
@@ -267,5 +282,22 @@ function getdates() {
     return false;
 }
 
+function postmthd() {
+    var x = correlation_mthd;
+    $.post("/corr_mthd", {
+        mthd: x
+    });
+    /*
+    $.post(
+        url = "/corr_mthd", // url
+        data = {
+            mthd: x
+        }, // data to be submit
+        success = function(data) { // success callback
+            noneed = 0;
+        }
+    )
+    */
+}
 
 // Restricts input for the given textbox to the given inputFilter.
