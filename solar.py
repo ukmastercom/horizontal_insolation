@@ -1,4 +1,5 @@
 #import nasa info
+import time
 import pandas as pd
 import numpy as np
 import sys,os
@@ -31,6 +32,7 @@ def getvals():
         for x in range(0,19):
             lat = lt[x]
             long = lng[x]
+            '''
             #GET https://power.larc.nasa.gov/cgi-bin/v1/DataAccess.py?&request=execute&identifier=SinglePoint&parameters=ALLSKY_SFC_SW_DWN&startDate=20150101&endDate=20150305&userCommunity=SSE&tempAverage=DAILY&outputList=CSV&lat=23.5000&lon=78.0000
             url = 'https://power.larc.nasa.gov/cgi-bin/v1/DataAccess.py?&request=execute&identifier=SinglePoint&parameters=ALLSKY_SFC_SW_DWN&startDate={s_d}&endDate={e_d}&userCommunity=SSE&tempAverage=DAILY&outputList=CSV&lat={lat}&lon={long}'.format(s_d=s_d,e_d=e_d,lat=lat,long=long)
             r = requests.get(url = url)
@@ -42,8 +44,31 @@ def getvals():
             csv_file = open(f_name, 'wb')
             csv_file.write(a)
             csv_file.close()
+            '''
+            url = "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=ALLSKY_SFC_PAR_TOT&community=RE&longitude={long}&latitude={lat}&start={s_d}&end={e_d}&format=CSV".format(s_d=s_d,e_d=e_d,lat=lat,long=long)
+            my_list=[]
+            with requests.Session() as s:
+                download = s.get(url)
+                decoded_content = download.content.decode('utf-8')
 
+                cr = csv.reader(decoded_content.splitlines(), delimiter=',')
+                my_list = list(cr)
+                my_list=my_list[10:]
+            hdr = ['year','month','date','value']
+            f_name="request_data_{i}.csv".format(i=i)
+            # writing to csv file 
+            with open(f_name, 'w',newline='') as csvfile: 
+                # creating a csv writer object 
+                csvwriter = csv.writer(csvfile) 
+                # writing the fields 
+                # writing the data rows 
+                csvwriter.writerow(hdr)
+                csvwriter.writerows(my_list)
+            time.sleep(20)
+            #df.to_csv(f_name)
+            i=i+1
     #save date and their value in csv
+    '''
     def writetocsv():
         header = ['date','value']
         global j
@@ -93,6 +118,7 @@ def getvals():
             f.close()
                 #tobeadd1.append(int(tobeadd[a][0]))
                 #tobeadd2.append(float(tobeadd[0][a]))
+    '''
     df=pd.read_csv("dates.csv")
     data=df['dates'].tolist()
     sdate=data[0]
@@ -119,4 +145,4 @@ def getvals():
     delta = d1 - d0
     delta=delta.days
     req_data(s_d,e_d)            
-    read_send_csv(delta)
+    #read_send_csv(delta)

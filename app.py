@@ -15,6 +15,7 @@ import fomatcsv
 import correl
 import rem
 import fomatcsv_dates
+import lstmmodel
 
 app = Flask(__name__)
 
@@ -46,12 +47,16 @@ def getlongi():
         cdf = pd.read_csv('method.csv',header=None)
         mthd=cdf[0][0]
         solar.getvals()
+        
         fomatcsv.convert()
-        fomatcsv_dates.convert_dates()
+        
+        #fomatcsv_dates.convert_dates()
         #pass your method_var here
         
         correl.cor(mthd)
+        lstmmodel.apply()
         rem.unwanted()
+        
         return 'ok'
 #def getinfo():
     # here we want to get the value of the key (i.e. ?key=value)
@@ -71,6 +76,12 @@ def getstart():
 def download_file():
     p="corr_op.csv"
     return send_file(p,attachment_filename='result.csv')
+
+@app.route('/download_inter')
+def download_interm():
+    p="final_save_dates.csv"
+    return send_file(p,attachment_filename='values.csv')
+
 
 @app.route('/corr_mthd',methods=["GET","POST"])
 def corr_mthd():
