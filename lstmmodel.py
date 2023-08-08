@@ -94,11 +94,11 @@ def apply():
     values = reframed.values
     #values
     while(reframed_shape_x%4!=0):
-    reframed_shape_x-=1
-    reframed_shape_y-=1
-    dataset = np.array(values)
-    x = dataset[:,0:reframed_shape_y]
-    y = dataset[:,[reframed_shape_y]]
+        reframed_shape_x= reframed_shape_x - 1
+        reframed_shape_y=reframed_shape_y - 1
+        dataset = np.array(values)
+        x = dataset[:,0:reframed_shape_y]
+        y = dataset[:,[reframed_shape_y]]
 
 
     scaler1 = MinMaxScaler(feature_range=(0, 1))
