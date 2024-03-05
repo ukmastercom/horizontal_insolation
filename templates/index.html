@@ -6,15 +6,19 @@
 
 <head>
     <!--jquery-->
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <!--<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />-->
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
     <!--<script type="text/javascript" src="home.js"></script>-->
     <script type="text/javascript" src="{{url_for('static', filename='home.js')}}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>-->
     <!--<link rel="stylesheet" href="home.css" /> -->
     <link rel="stylesheet" href="{{ url_for('static',filename='css/home.css') }}" />
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?AuthenticationService.Authenticate?*"></script>-->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAihoCYFho8rqJwnBjxzBlk56SR0uL7_Ks&libraries=geometry&callback=Function.prototype"></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry&callback=Function.prototype"></script>
 
 </head>
 

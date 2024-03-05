@@ -26,7 +26,7 @@ def index():
 @app.route('/getlati',methods=["POST"])
 def getlati():
     if request.method == 'POST':
-        
+
         ##data = request.get_json(silent=True)
         ##print(data)
         ##with open("sample.json", "w") as outfile:
@@ -37,7 +37,7 @@ def getlati():
         dfa = pd.DataFrame(value_lati,columns=["Latitudes"])
         dfa.to_csv('latitude.csv', index=False)
         return "ok"
-        
+
 @app.route('/getlongi',methods=["POST"])
 def getlongi():
     if request.method == 'POST':
@@ -47,16 +47,16 @@ def getlongi():
         cdf = pd.read_csv('method.csv',header=None)
         mthd=cdf[0][0]
         solar.getvals()
-        
+
         fomatcsv.convert()
-        
+
         #fomatcsv_dates.convert_dates()
         #pass your method_var here
-        
+
         correl.cor(mthd)
-        lstmmodel.apply()
+        # lstmmodel.apply()
         rem.unwanted()
-        
+
         return 'ok'
 #def getinfo():
     # here we want to get the value of the key (i.e. ?key=value)

@@ -7,11 +7,11 @@ import os
 import csv
 from pandas import *
 import seaborn as sns
-import scipy.stats as stats
+# import scipy.stats as stats
 from numpy import loadtxt
-from xgboost import XGBRegressor
-from matplotlib import pyplot
-from tslearn.metrics import dtw, dtw_path
+# from xgboost import XGBRegressor
+# from matplotlib import pyplot
+# from tslearn.metrics import dtw, dtw_path
 #%matplotlib inline
 
 def cor(mthd):
@@ -36,29 +36,29 @@ def cor(mthd):
         x3=np.array(x3)
         X = x3[:,0:18]
         y = x3[:,[18]]
-        model = XGBRegressor()
+        # model = XGBRegressor()
         model.fit(X, y)
         df_corr=model.feature_importances_
     else:
         x3=df_var
-        df_corr.append(dtw(x3['v18'],x3['v0']))
-        df_corr.append(dtw(x3['v18'],x3['v1']))
-        df_corr.append(dtw(x3['v18'],x3['v2']))
-        df_corr.append(dtw(x3['v18'],x3['v3']))
-        df_corr.append(dtw(x3['v18'],x3['v4']))
-        df_corr.append(dtw(x3['v18'],x3['v5']))
-        df_corr.append(dtw(x3['v18'],x3['v6']))
-        df_corr.append(dtw(x3['v18'],x3['v7']))
-        df_corr.append(dtw(x3['v18'],x3['v8']))
-        df_corr.append(dtw(x3['v18'],x3['v9']))
-        df_corr.append(dtw(x3['v18'],x3['v10']))
-        df_corr.append(dtw(x3['v18'],x3['v11']))
-        df_corr.append(dtw(x3['v18'],x3['v12']))
-        df_corr.append(dtw(x3['v18'],x3['v13']))
-        df_corr.append(dtw(x3['v18'],x3['v14']))
-        df_corr.append(dtw(x3['v18'],x3['v15']))
-        df_corr.append(dtw(x3['v18'],x3['v16']))
-        df_corr.append(dtw(x3['v18'],x3['v17']))
+        # df_corr.append(dtw(x3['v18'],x3['v0']))
+        # df_corr.append(dtw(x3['v18'],x3['v1']))
+        # df_corr.append(dtw(x3['v18'],x3['v2']))
+        # df_corr.append(dtw(x3['v18'],x3['v3']))
+        # df_corr.append(dtw(x3['v18'],x3['v4']))
+        # df_corr.append(dtw(x3['v18'],x3['v5']))
+        # df_corr.append(dtw(x3['v18'],x3['v6']))
+        # df_corr.append(dtw(x3['v18'],x3['v7']))
+        # df_corr.append(dtw(x3['v18'],x3['v8']))
+        # df_corr.append(dtw(x3['v18'],x3['v9']))
+        # df_corr.append(dtw(x3['v18'],x3['v10']))
+        # df_corr.append(dtw(x3['v18'],x3['v11']))
+        # df_corr.append(dtw(x3['v18'],x3['v12']))
+        # df_corr.append(dtw(x3['v18'],x3['v13']))
+        # df_corr.append(dtw(x3['v18'],x3['v14']))
+        # df_corr.append(dtw(x3['v18'],x3['v15']))
+        # df_corr.append(dtw(x3['v18'],x3['v16']))
+        # df_corr.append(dtw(x3['v18'],x3['v17']))
     correlated_features = set()
 
     if(mthd<4):

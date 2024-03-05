@@ -17,6 +17,7 @@ function loadmap() {
         mapTypeId: google.maps.MapTypeId.HYBRID
     };
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    // map = new google.maps.Map(document.getElementById("map"), mapOptions);
     map.setMapTypeId(google.maps.MapTypeId.HYBRID);
 }
 
